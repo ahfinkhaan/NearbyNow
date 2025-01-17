@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NearbyNow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f7f4;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #c8e6c9;
+        }
+
+        .auth-buttons .btn {
+            margin-left: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            cursor: pointer;
+            color: #4caf50;
+            background-color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .auth-buttons .btn:hover {
+            background-color: #c8e6c9;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #66bb6a, #43a047);
+            color: white;
+            height: 70vh;
+            padding: 2rem;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            background-color: white;
+            color: #4caf50;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #c8e6c9;
+            color: #333;
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #dcedc8;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .categories {
+            padding: 4rem 2rem;
+            background-color: #a5d6a7;
+            text-align: center;
+        }
+
+        .categories h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .categories-grid {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .category-item {
+            padding: 1rem 2rem;
+            background-color: #43a047;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .category-item:hover {
+            background-color: #66bb6a;
+            transform: scale(1.1);
+        }
+
+        .about {
+            padding: 4rem 2rem;
+            background-color: #e8f5e9;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer {
+            padding: 1.5rem 2rem;
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #c8e6c9;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .categories-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">NearbyNow</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn login-btn" onclick="window.location.href='login.html'">Login</button>
+            <button class="btn signup-btn" onclick="window.location.href='signup.html'">Sign Up</button>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover Local Businesses &amp; Entrepreneurs</h1>
+            <p>Connecting communities with small-scale businesses and sustainable products.</p>
+            <button class="btn explore-btn">Explore Now</button>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Our Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Personalized Profiles</h3>
+                <p>Tailored profiles for buyers and sellers to enhance user experience.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Secure Payments</h3>
+                <p>Reliable and secure payment gateways for hassle-free transactions.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Eco-Friendly Products</h3>
+                <p>Identify sustainable options with our Eco-Friendly Badge system.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Community Engagement</h3>
+                <p>Participate in blogs, forums, and local events to connect with others.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="categories" class="categories">
+        <h2>Explore Categories</h2>
+        <div class="categories-grid">
+            <div class="category-item">Homemade Food</div>
+            <div class="category-item">Accessories</div>
+            <div class="category-item">Crafts</div>
+            <div class="category-item">Part-Time Jobs</div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>"NearbyNow" is dedicated to fostering connections within communities by supporting small-scale businesses and promoting sustainable, personalized transactions.</p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 NearbyNow. All rights reserved.</p>
+        <nav>
+            <ul>
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#terms">Terms of Service</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('click', () => {
+                alert(`Explore more about ${item.textContent}!`);
+            });
+        });
+
+        const exploreButton = document.querySelector('.explore-btn');
+        exploreButton.addEventListener('click', () => {
+            window.scrollTo({ top: document.getElementById('features').offsetTop, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>
+
